@@ -4,50 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Newsletter Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header><h1>📰 Newsletter Admin</h1></header>
+  <header>
+    <h1>📰 Newsletter Admin</h1>
+    <p class="subtitle">Curate &amp; send your daily news digest</p>
+  </header>
 
   <main>
     <!-- Topic Selection -->
     <section id="topics">
-      <h2>Select Topics</h2>
+      <h2>🗂️ Select Topics</h2>
       <div id="topic-grid"></div>
-      <button id="fetch-btn" onclick="fetchAllNews()">Fetch News</button>
+      <button id="fetch-btn" onclick="fetchAllNews()">🔍 Fetch News</button>
     </section>
 
     <!-- News Cards -->
     <section id="news" hidden>
       <div id="news-header">
-        <h2>Articles <span id="count"></span></h2>
-        <label><input type="checkbox" id="select-all" checked onchange="toggleAll(this.checked)"> Select All</label>
+        <h2>📋 Articles <span id="count"></span></h2>
+        <label class="select-all-label"><input type="checkbox" id="select-all" checked onchange="toggleAll(this.checked)"> Select All</label>
       </div>
       <div id="cards"></div>
-      <button id="preview-btn" onclick="showPreview()">Preview Newsletter</button>
+      <button id="preview-btn" onclick="showPreview()">👁️ Preview Newsletter</button>
     </section>
   </main>
 
   <!-- Preview Modal -->
-  <div id="modal">
+  <div id="modal" role="dialog" aria-modal="true">
     <div id="modal-content">
       <div id="modal-header">
         <h2>Newsletter Preview</h2>
-        <button onclick="closeModal()">✕</button>
+        <button onclick="closeModal()" aria-label="Close">✕</button>
       </div>
       <div id="preview"></div>
       <div id="modal-actions">
-        <button onclick="closeModal()">Close</button>
-        <button id="send-btn" onclick="sendNewsletter()">Send Newsletter</button>
+        <button onclick="closeModal()">Cancel</button>
+        <button id="send-btn" onclick="sendNewsletter()">🚀 Send Newsletter</button>
       </div>
     </div>
   </div>
 
   <!-- Toast -->
-  <div id="toast"></div>
+  <div id="toast" aria-live="polite"></div>
 
   <!-- Loading -->
   <div id="loader"><div class="spinner"></div></div>
+
+  <footer>
+    <p>Built with ❤️ · Powered by <a href="https://gnews.io" target="_blank" rel="noopener">GNews</a> &amp; <a href="https://emailjs.com" target="_blank" rel="noopener">EmailJS</a></p>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="config.js"></script>
