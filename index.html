@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>📰 Newsletter Admin</h1></header>
+
+  <main>
+    <!-- Topic Selection -->
+    <section id="topics">
+      <h2>Select Topics</h2>
+      <div id="topic-grid"></div>
+      <button id="fetch-btn" onclick="fetchAllNews()">Fetch News</button>
+    </section>
+
+    <!-- News Cards -->
+    <section id="news" hidden>
+      <div id="news-header">
+        <h2>Articles <span id="count"></span></h2>
+        <label><input type="checkbox" id="select-all" checked onchange="toggleAll(this.checked)"> Select All</label>
+      </div>
+      <div id="cards"></div>
+      <button id="preview-btn" onclick="showPreview()">Preview Newsletter</button>
+    </section>
+  </main>
+
+  <!-- Preview Modal -->
+  <div id="modal" hidden>
+    <div id="modal-content">
+      <div id="modal-header">
+        <h2>Newsletter Preview</h2>
+        <button onclick="closeModal()">✕</button>
+      </div>
+      <div id="preview"></div>
+      <div id="modal-actions">
+        <button onclick="closeModal()">Close</button>
+        <button id="send-btn" onclick="sendNewsletter()">Send Newsletter</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast"></div>
+
+  <!-- Loading -->
+  <div id="loader" hidden><div class="spinner"></div></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
