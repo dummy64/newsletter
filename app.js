@@ -116,10 +116,10 @@ function showPreview() {
   const html = buildNewsletterHTML();
   if (!html) return toast('No articles selected', 'error');
   document.getElementById('preview').innerHTML = html;
-  document.getElementById('modal').hidden = false;
+  document.getElementById('modal').classList.add('active');
 }
 
-function closeModal() { document.getElementById('modal').hidden = true; }
+function closeModal() { document.getElementById('modal').classList.remove('active'); }
 
 // Send
 async function sendNewsletter() {
