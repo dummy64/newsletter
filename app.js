@@ -20,7 +20,7 @@ function toast(msg, type = 'info') {
 }
 
 // Loader
-const setLoading = (v) => document.getElementById('loader').hidden = !v;
+const setLoading = (v) => document.getElementById('loader').classList.toggle('active', v);
 
 // Fetch news through CORS proxies with fallback
 async function fetchNews(topic) {
