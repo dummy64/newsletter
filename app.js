@@ -24,7 +24,10 @@ const setLoading = (v) => document.getElementById('loader').classList.toggle('ac
 
 // Fetch news through CORS proxies with fallback
 async function fetchNews(topic) {
-  const url = `${CONFIG.gnews.baseUrl}?topic=${topic}&lang=en&max=10&apikey=${CONFIG.gnews.apiKey}`;
+  const searchQuery = CONFIG.gnews.searchTopics?.[topic];
+  const url = searchQuery
+    ? `https://gnews.io/api/v4/search?q=${encodeURIComponent(searchQuery)}&lang=en&max=10&apikey=${CONFIG.gnews.apiKey}`
+    : `${CONFIG.gnews.baseUrl}?topic=${topic}&lang=en&max=10&apikey=${CONFIG.gnews.apiKey}`;
   for (const proxy of CONFIG.corsProxies) {
     try {
       const res = await fetch(proxy(url));

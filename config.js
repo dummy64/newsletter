@@ -2,7 +2,8 @@ const CONFIG = {
   gnews: {
     apiKey: 'f9fb9961bee13fd243a8ab7d128d54ac',
     baseUrl: 'https://gnews.io/api/v4/top-headlines',
-    topics: ['world', 'nation', 'business', 'technology', 'entertainment', 'sports', 'science', 'health'],
+    topics: ['world', 'nation', 'business', 'technology', 'entertainment', 'sports', 'science', 'health', 'ai'],
+    searchTopics: { ai: 'artificial intelligence' },
   },
   corsProxies: [
     (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
